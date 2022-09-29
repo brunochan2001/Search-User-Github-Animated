@@ -24,5 +24,7 @@ export const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2) !important'
   },
-  content: { display: 'flex', height: '100vh', alignItems: 'center' }
+  content: { display: 'flex', height: '100vh', alignItems: 'center' },
+  labItem: { color: 'grey !important', minHeight: '24px !important' },
+  userContainer: { overflowY: 'scroll' }
 }));

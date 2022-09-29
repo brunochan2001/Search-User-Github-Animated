@@ -1,8 +1,14 @@
 import React from 'react';
+import { SearchContent, UserContent } from '../../container';
 import DefaultLayout from '../../layout';
 
 const UserSearchPage = () => {
-  return <DefaultLayout>UserSearchPage</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <SearchContent />
+      <UserContent />
+    </DefaultLayout>
+  );
 };
 
 export default UserSearchPage;
