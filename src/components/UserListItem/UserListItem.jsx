@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Avatar,
   ListItem,
@@ -6,7 +7,6 @@ import {
   ListItemText,
   Typography
 } from '@mui/material';
-import React from 'react';
 
 const UserListItem = () => {
   return (
@@ -14,7 +14,10 @@ const UserListItem = () => {
       <ListItem disablePadding>
         <ListItemButton>
           <ListItemAvatar>
-            <Avatar></Avatar>
+            <Avatar
+              alt="Remy Sharp"
+              src="https://mui.com/static/images/avatar/1.jpg"
+            ></Avatar>
           </ListItemAvatar>
           <ListItemText
             primary="Brunch this weekend?"

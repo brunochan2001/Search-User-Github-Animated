@@ -18,7 +18,9 @@ const DefaultLayout: React.FC<Props> = props => {
         <>
           <Container maxWidth="sm">
             <div className={classes.content}>
-              <Paper className={classes.paperMobile}>{children}</Paper>
+              <Paper className={classes.paperMobile} elevation={16}>
+                {children}
+              </Paper>
             </div>
           </Container>
         </>
@@ -26,7 +28,9 @@ const DefaultLayout: React.FC<Props> = props => {
         <>
           <Container maxWidth="md">
             <div className={classes.content}>
-              <Paper className={classes.paper}>{children}</Paper>
+              <Paper className={classes.paper} elevation={16}>
+                {children}
+              </Paper>
             </div>
           </Container>
         </>
