@@ -14,15 +14,13 @@ export const useStyles = makeStyles(() => ({
     width: '100%',
     height: '70vh',
     display: 'flex',
-    flexDirection: 'column',
-    boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2) !important'
+    flexDirection: 'column'
   },
   paperMobile: {
     width: '100%',
     height: '70vh',
     display: 'flex',
-    flexDirection: 'column',
-    boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2) !important'
+    flexDirection: 'column'
   },
   content: { display: 'flex', height: '100vh', alignItems: 'center' },
   labItem: { color: 'grey !important', minHeight: '24px !important' },
