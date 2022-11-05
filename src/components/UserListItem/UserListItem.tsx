@@ -7,20 +7,22 @@ import {
   ListItemText,
   Typography
 } from '@mui/material';
+import { User } from '../../lib/types';
 
-const UserListItem = () => {
+interface Props {
+  item: User;
+}
+
+const UserListItem: React.FC<Props> = ({ item }) => {
   return (
     <>
       <ListItem disablePadding>
         <ListItemButton>
           <ListItemAvatar>
-            <Avatar
-              alt="Remy Sharp"
-              src="https://mui.com/static/images/avatar/1.jpg"
-            ></Avatar>
+            <Avatar alt="Remy Sharp" src={item.avatar_url}></Avatar>
           </ListItemAvatar>
           <ListItemText
-            primary="Brunch this weekend?"
+            primary={item.login}
             secondary={
               <>
                 <Typography
@@ -29,7 +31,7 @@ const UserListItem = () => {
                   variant="body2"
                   color="text.primary"
                 >
-                  Ali Connors
+                  {item.type}
                 </Typography>
               </>
             }
