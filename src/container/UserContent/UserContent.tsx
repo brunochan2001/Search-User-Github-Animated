@@ -1,16 +1,46 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { UserList, UserTabs } from '../../components';
+import { Progress, UserList, UserTabs } from '../../components';
 import { RootState } from '../../store/storeConfig';
+import { motion } from 'framer-motion';
+import { useStyles } from '../../layout/DefaultLayout/style';
 
-const UserContent = () => {
-  const { data } = useSelector((state: RootState) => state.users);
+interface Props {
+  open: boolean;
+}
+
+const variants = {
+  open: {
+    clipPath: 'inset(0% 0% 0% 0% round 10px)',
+    height: '500px',
+    transition: {
+      type: 'spring',
+      bounce: 0,
+      staggerChildren: 0.05
+    }
+  },
+  closed: {
+    clipPath: 'inset(10% 50% 90% 50% round 10px)',
+    height: '0px',
+    transition: {
+      type: 'spring',
+      bounce: 0,
+      duration: 1
+    }
+  }
+};
+
+const UserContent: React.FC<Props> = ({ open }) => {
+  const classes = useStyles();
+  const { data, loading } = useSelector((state: RootState) => state.users);
 
   return (
-    <>
-      <UserTabs />
-      <UserList data={data} />
-    </>
+    <div className={classes.motionContainer}>
+      <motion.div variants={variants} animate={open ? 'open' : 'closed'}>
+        <UserTabs />
+        {loading ? <Progress /> : <UserList data={data} />}
+      </motion.div>
+    </div>
   );
 };
 

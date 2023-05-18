@@ -4,9 +4,9 @@ import {
   combineReducers,
   createStore
 } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import { userReducers } from './reducers';
-import thunkMiddleware from 'redux-thunk';
 
 const middleware = [thunkMiddleware];
 

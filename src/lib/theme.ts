@@ -1,5 +1,5 @@
 import {
-  createMuiTheme,
+  createTheme,
   responsiveFontSizes,
   ThemeOptions
 } from '@material-ui/core/styles';
@@ -18,4 +18,4 @@ const options: ThemeOptions = {
   }
 };
 
-export const theme = responsiveFontSizes(createMuiTheme(options));
+export const theme = responsiveFontSizes(createTheme(options));

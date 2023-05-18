@@ -28,7 +28,7 @@
   font-weight: 400;
   padding: 0;
   border: 0;
-  width: 10rem;
+  width: 100%;
 }
 .header-container__search-input:focus {
   outline: none;

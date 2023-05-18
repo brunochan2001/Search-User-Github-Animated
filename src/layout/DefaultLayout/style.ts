@@ -12,17 +12,18 @@ export const useStyles = makeStyles(() => ({
   },
   paper: {
     width: '100%',
-    height: '70vh',
+    height: 'min-content',
     display: 'flex',
     flexDirection: 'column'
   },
   paperMobile: {
     width: '100%',
-    height: '70vh',
+    height: 'min-content',
     display: 'flex',
     flexDirection: 'column'
   },
   content: { display: 'flex', height: '100vh', alignItems: 'center' },
   labItem: { color: 'grey !important', minHeight: '24px !important' },
-  userContainer: { overflowY: 'scroll' }
+  userContainer: { overflowY: 'hidden', height: '90%' },
+  motionContainer: { padding: '0 1rem' }
 }));

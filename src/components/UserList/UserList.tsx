@@ -12,7 +12,7 @@ const UserList: React.FC<Props> = ({ data }) => {
   const classes = useStyles();
   return (
     <div className={classes.userContainer}>
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <List>
         {data.map((e, index) => (
           <UserListItem key={index} item={e} />
         ))}
