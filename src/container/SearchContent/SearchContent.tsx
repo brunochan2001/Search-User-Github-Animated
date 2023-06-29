@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useDebounce } from 'react-use';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppThunkDispatch, RootState } from '../../store/storeConfig';
 import { getUsers } from '../../store/actions';
-import { AppThunkDispatch } from '../../store/storeConfig';
+import { useDebounce } from 'react-use';
 import { SearchBar } from '../../components';
 
 interface Props {
@@ -10,16 +10,17 @@ interface Props {
 }
 
 const SearchContent: React.FC<Props> = ({ setIsOpen }) => {
+  const { error } = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch<AppThunkDispatch>();
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    if (search) {
+    if (search && !error) {
       setIsOpen(true);
-    } else {
+    } else if (!search || error) {
       setIsOpen(false);
     }
-  }, [search]);
+  }, [search, error]);
 
   useDebounce(
     () => {
@@ -31,11 +32,7 @@ const SearchContent: React.FC<Props> = ({ setIsOpen }) => {
     [search]
   );
 
-  return (
-    <>
-      <SearchBar setSearch={setSearch}></SearchBar>
-    </>
-  );
+  return <SearchBar setSearch={setSearch} />;
 };
 
 export default SearchContent;

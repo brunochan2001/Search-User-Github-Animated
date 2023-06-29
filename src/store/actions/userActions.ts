@@ -19,12 +19,7 @@ export const getUsers =
     dispatch({ type: GET_USERS_LOADING });
     try {
       const response = await axios.get(
-        `${endpoints.getUsers}/search/users?per_page=6?per_page=6&q=${value}`,
-        {
-          headers: {
-            Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}`
-          }
-        }
+        `${endpoints.getUsers}/search/users?per_page=6?&q=${value}`
       );
       const { data } = response;
       const { items } = data;
@@ -40,12 +35,7 @@ export const viewUser =
     dispatch({ type: GET_SINGLE_USER_LOADING });
     try {
       const response = await axios.get(
-        `${endpoints.getUsers}/users/${username}`,
-        {
-          headers: {
-            Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}`
-          }
-        }
+        `${endpoints.getUsers}/users/${username}`
       );
       if (response) {
         const { data } = response;
