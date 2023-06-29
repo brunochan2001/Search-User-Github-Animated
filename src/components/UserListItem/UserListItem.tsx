@@ -10,16 +10,21 @@ import {
 import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-interface Props {
+interface UserListItem {
   item: User;
+  handleViewUser: (username: string) => void;
 }
 
-const UserListItem: React.FC<Props> = ({ item }) => {
+const UserListItem: React.FC<UserListItem> = ({ item, handleViewUser }) => {
   return (
     <>
       <ListItem
         secondaryAction={
-          <IconButton edge="end" aria-label="see">
+          <IconButton
+            edge="end"
+            aria-label="see"
+            onClick={() => handleViewUser(item.login)}
+          >
             <VisibilityIcon />
           </IconButton>
         }

@@ -5,7 +5,7 @@ import {
   createStore
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import thunk, { ThunkDispatch } from 'redux-thunk';
+import { ThunkDispatch } from 'redux-thunk';
 import { userReducers } from './reducers';
 
 const middleware = [thunkMiddleware];
@@ -18,6 +18,6 @@ const store = createStore(reducer, applyMiddleware(...middleware));
 store.subscribe(() => '');
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunkDispatch = ThunkDispatch<RootState, any, AnyAction>;
+export type AppThunkDispatch = ThunkDispatch<RootState, void, AnyAction>;
 
 export default store;

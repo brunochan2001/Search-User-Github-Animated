@@ -4,39 +4,59 @@ import { AnyAction } from 'redux';
 import { RootState } from '../storeConfig';
 import * as endpoints from '../endpoints';
 import {
-  GET_USER_LOADING,
-  GET_USER_SUCCESS,
-  GET_USER_FAIL,
-  VIEW_USER,
-  DISMISS_USER
+  GET_USERS_LOADING,
+  GET_USERS_SUCCESS,
+  GET_USERS_FAIL,
+  GET_SINGLE_USER_LOADING,
+  GET_SINGLE_USER_SUCCESS,
+  GET_SINGLE_USER_FAIL,
+  DISMMISS_USER
 } from '../actionTypes';
 
 export const getUsers =
   (value: string): ThunkAction<void, RootState, unknown, AnyAction> =>
   async dispatch => {
+    dispatch({ type: GET_USERS_LOADING });
     try {
-      dispatch({ type: GET_USER_LOADING });
-      const response = await axios.get(`${endpoints.getUsers}&q=${value}`, {
-        headers: {
-          Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}`
+      const response = await axios.get(
+        `${endpoints.getUsers}/search/users?per_page=6?per_page=6&q=${value}`,
+        {
+          headers: {
+            Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}`
+          }
         }
-      });
+      );
       const { data } = response;
       const { items } = data;
-      dispatch({ type: GET_USER_SUCCESS, payload: items });
+      dispatch({ type: GET_USERS_SUCCESS, payload: items });
     } catch (error) {
-      console.log(error);
-      dispatch({ type: GET_USER_FAIL, payload: { error } });
+      dispatch({ type: GET_USERS_FAIL, payload: { error } });
     }
   };
 
 export const viewUser =
-  (id: string): ThunkAction<void, RootState, unknown, AnyAction> =>
-  dispatch => {
-    dispatch({ type: VIEW_USER, payload: { id } });
+  (username: string): ThunkAction<void, RootState, unknown, AnyAction> =>
+  async dispatch => {
+    dispatch({ type: GET_SINGLE_USER_LOADING });
+    try {
+      const response = await axios.get(
+        `${endpoints.getUsers}/users/${username}`,
+        {
+          headers: {
+            Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}`
+          }
+        }
+      );
+      if (response) {
+        const { data } = response;
+        dispatch({ type: GET_SINGLE_USER_SUCCESS, payload: data });
+      }
+    } catch (error) {
+      dispatch({ type: GET_SINGLE_USER_FAIL, payload: { error } });
+    }
   };
 
 export const dismmissUser =
-  (): ThunkAction<void, RootState, unknown, AnyAction> => dispatch => {
-    dispatch({ type: DISMISS_USER });
+  (): ThunkAction<void, RootState, unknown, AnyAction> => async dispatch => {
+    dispatch({ type: DISMMISS_USER });
   };

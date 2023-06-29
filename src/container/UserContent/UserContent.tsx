@@ -1,9 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Progress, UserList, UserTabs } from '../../components';
-import { RootState } from '../../store/storeConfig';
+import { useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppThunkDispatch, RootState } from '../../store/storeConfig';
+import { viewUser } from '../../store/actions';
 import { useStyles } from '../../layout/DefaultLayout/style';
+import { Progress, UserList, UserTabs } from '../../components';
 
 interface Props {
   open: boolean;
@@ -31,14 +33,24 @@ const variants = {
 };
 
 const UserContent: React.FC<Props> = ({ open }) => {
+  const dispatch = useDispatch<AppThunkDispatch>();
+  const history = useHistory();
   const classes = useStyles();
   const { data, loading } = useSelector((state: RootState) => state.users);
 
+  const handleViewUser = (username: string) => {
+    dispatch(viewUser(username));
+    history.push('/user');
+  };
   return (
     <div className={classes.motionContainer}>
       <motion.div variants={variants} animate={open ? 'open' : 'closed'}>
         <UserTabs />
-        {loading ? <Progress /> : <UserList data={data} />}
+        {loading ? (
+          <Progress />
+        ) : (
+          <UserList data={data} handleViewUser={handleViewUser} />
+        )}
       </motion.div>
     </div>
   );

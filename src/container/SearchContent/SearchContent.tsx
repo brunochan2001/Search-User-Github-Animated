@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useDebounce } from 'react-use';
-import { SearchBar } from '../../components';
 import { getUsers } from '../../store/actions';
 import { AppThunkDispatch } from '../../store/storeConfig';
+import { SearchBar } from '../../components';
 
 interface Props {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +27,7 @@ const SearchContent: React.FC<Props> = ({ setIsOpen }) => {
         dispatch(getUsers(search.toLocaleLowerCase()));
       }
     },
-    100,
+    400,
     [search]
   );
 
