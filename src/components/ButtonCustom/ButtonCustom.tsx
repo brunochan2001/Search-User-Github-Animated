@@ -11,7 +11,7 @@ const ButtonCustom: React.FC<Props> = ({ onClick }) => {
 
   return (
     <Button variant="contained" onClick={onClick} className={classes.button}>
-      regresar
+      Return
     </Button>
   );
 };

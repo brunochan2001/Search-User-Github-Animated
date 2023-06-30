@@ -8,12 +8,12 @@ import Routes from './lib/Routes';
 import { darkTheme, lightTheme } from './lib/theme';
 
 const App: React.FC = () => {
-  const [themeCustom, setThemeCustom] = useState<string>(
-    localStorage.getItem('theme')!
+  const [themeCustom, setThemeCustom] = useState<string | null>(
+    localStorage.getItem('theme')
   );
 
   window.addEventListener('storage', () => {
-    setThemeCustom(localStorage.getItem('theme')!);
+    setThemeCustom(localStorage.getItem('theme'));
   });
 
   return (
