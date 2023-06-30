@@ -57,7 +57,7 @@ export interface ActiveUser {
 
 export interface UsersState {
   loading: boolean;
-  error: false | unknown;
+  error: null;
   data: User[];
   activeUser: ActiveUser | {};
 }

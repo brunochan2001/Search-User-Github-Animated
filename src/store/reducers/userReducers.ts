@@ -12,7 +12,7 @@ import {
 
 const initialState: UsersState = {
   loading: false,
-  error: false,
+  error: null,
   data: [],
   activeUser: {}
 };
@@ -39,7 +39,7 @@ const reducer = (state: UsersState = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        error: payload.error,
+        error: payload,
         data: []
       };
 
@@ -61,7 +61,7 @@ const reducer = (state: UsersState = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        error: payload.error,
+        error: payload,
         activeUser: {}
       };
 

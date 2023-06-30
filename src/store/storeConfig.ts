@@ -6,7 +6,7 @@ import {
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { ThunkDispatch } from 'redux-thunk';
-import { userReducers } from './reducers';
+import { reducer as userReducers } from './reducers';
 
 const middleware = [thunkMiddleware];
 

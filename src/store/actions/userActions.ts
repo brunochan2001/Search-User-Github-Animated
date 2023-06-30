@@ -25,7 +25,9 @@ export const getUsers =
       const { items } = data;
       dispatch({ type: GET_USERS_SUCCESS, payload: items });
     } catch (error) {
-      dispatch({ type: GET_USERS_FAIL, payload: { error } });
+      if (error instanceof Error) {
+        dispatch({ type: GET_USERS_FAIL, payload: error.message });
+      }
     }
   };
 
@@ -42,7 +44,9 @@ export const viewUser =
         dispatch({ type: GET_SINGLE_USER_SUCCESS, payload: data });
       }
     } catch (error) {
-      dispatch({ type: GET_SINGLE_USER_FAIL, payload: { error } });
+      if (error instanceof Error) {
+        dispatch({ type: GET_SINGLE_USER_FAIL, payload: error.message });
+      }
     }
   };
 
