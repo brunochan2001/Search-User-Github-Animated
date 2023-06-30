@@ -6,3 +6,4 @@ export * from './Progress';
 export * from './UserCard';
 export * from './UserInfo';
 export * from './Alert';
+export * from './ButtonCustom';

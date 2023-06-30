@@ -19,7 +19,7 @@ export const getUsers =
     dispatch({ type: GET_USERS_LOADING });
     try {
       const response = await axios.get(
-        `${endpoints.getUsers}/search/users?per_page=6?&q=${value}`
+        `${endpoints.getUsers}/search/users?per_page=6&q=${value}`
       );
       const { data } = response;
       const { items } = data;

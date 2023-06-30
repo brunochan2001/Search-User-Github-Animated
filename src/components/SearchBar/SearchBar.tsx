@@ -2,17 +2,19 @@ import React, { Dispatch, SetStateAction } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import { IconButton } from '@mui/material';
 import './style.css';
 
 interface Props {
   setSearch: Dispatch<SetStateAction<string>>;
+  handleChangeTheme: () => void;
 }
 
-const SearchBar: React.FC<Props> = ({ setSearch }) => {
+const SearchBar: React.FC<Props> = ({ setSearch, handleChangeTheme }) => {
   return (
     <div className="header-container">
       <div className="header-container__search">
-        <SearchIcon sx={{ color: 'action.active' }} />
+        <SearchIcon />
         <input
           className="header-container__search-input"
           placeholder="Searching user"
@@ -21,9 +23,13 @@ const SearchBar: React.FC<Props> = ({ setSearch }) => {
       </div>
       <div className="header-container__icon">
         <a href="https://github.com/brunochan2001">
-          <GitHubIcon />
+          <IconButton color="inherit" size="small">
+            <GitHubIcon />
+          </IconButton>
         </a>
-        <WbSunnyIcon />
+        <IconButton color="inherit" size="small" onClick={handleChangeTheme}>
+          <WbSunnyIcon />
+        </IconButton>
       </div>
     </div>
   );

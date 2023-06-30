@@ -32,7 +32,16 @@ const SearchContent: React.FC<Props> = ({ setIsOpen }) => {
     [search]
   );
 
-  return <SearchBar setSearch={setSearch} />;
+  const handleChangeTheme = () => {
+    const localTheme =
+      localStorage.getItem('theme') == 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', localTheme);
+    window.dispatchEvent(new Event('storage'));
+  };
+
+  return (
+    <SearchBar setSearch={setSearch} handleChangeTheme={handleChangeTheme} />
+  );
 };
 
 export default SearchContent;

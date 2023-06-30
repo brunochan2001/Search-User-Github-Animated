@@ -3,17 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppThunkDispatch, RootState } from '../../store/storeConfig';
 import { dismmissUser } from '../../store/actions';
-import { Button, Grid } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { Progress, UserCard, UserInfo } from '../../components';
-
-const ButtonCustom = styled(Button)(() => ({
-  color: '#000',
-  backgroundColor: '#BDBDBD',
-  '&:hover': {
-    backgroundColor: '#BDBDBD'
-  }
-}));
+import { Grid } from '@mui/material';
+import { Progress, UserCard, UserInfo, ButtonCustom } from '../../components';
 
 const UserItemContent = () => {
   const dispatch = useDispatch<AppThunkDispatch>();
@@ -43,13 +34,7 @@ const UserItemContent = () => {
           </Grid>
           <Grid container direction="row-reverse">
             <Grid item sx={{ marginTop: { xs: '10px', lg: '0' } }}>
-              <ButtonCustom
-                variant="contained"
-                onClick={handleDismissser}
-                color="info"
-              >
-                regresar
-              </ButtonCustom>
+              <ButtonCustom onClick={handleDismissser} />
             </Grid>
           </Grid>
         </>

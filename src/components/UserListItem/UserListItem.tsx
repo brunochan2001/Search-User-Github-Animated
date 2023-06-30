@@ -23,6 +23,7 @@ const UserListItem: React.FC<UserListItem> = ({ item, handleViewUser }) => {
           <IconButton
             edge="end"
             aria-label="see"
+            color="inherit"
             onClick={() => handleViewUser(item.login)}
           >
             <VisibilityIcon />
@@ -39,7 +40,6 @@ const UserListItem: React.FC<UserListItem> = ({ item, handleViewUser }) => {
               sx={{ display: 'inline' }}
               component="span"
               variant="body2"
-              color="text.primary"
             >
               {item.type}
             </Typography>

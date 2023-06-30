@@ -23,6 +23,8 @@
 }
 
 .header-container__search-input {
+  background-color: inherit;
+  color: inherit;
   font-family: 'Roboto';
   font-size: 20px;
   font-weight: 400;
@@ -30,6 +32,7 @@
   border: 0;
   width: 100%;
 }
+
 .header-container__search-input:focus {
   outline: none;
 }

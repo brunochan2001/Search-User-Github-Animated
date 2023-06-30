@@ -31,7 +31,7 @@ const UserInfo: React.FC<Props> = ({ activeUser }) => {
           />
         </Box>
       </Grid>
-      <Grid item xs={7} direction="column" spacing={2}>
+      <Grid item xs={7}>
         <Grid item xs>
           <Typography
             gutterBottom
@@ -46,10 +46,7 @@ const UserInfo: React.FC<Props> = ({ activeUser }) => {
           >
             {twitter_username || 'not twitter name'}
           </Typography>
-          <Typography
-            sx={{ typography: { md: 'body1', xs: 'caption' } }}
-            color="text.secondary"
-          >
+          <Typography sx={{ typography: { md: 'body1', xs: 'caption' } }}>
             {bio || 'not bio'}
           </Typography>
         </Grid>
@@ -60,10 +57,7 @@ const UserInfo: React.FC<Props> = ({ activeUser }) => {
             <BusinessIcon fontSize="small" />
           </Grid>
           <Grid item xs={11}>
-            <Typography
-              sx={{ typography: { md: 'body2', xs: 'caption' } }}
-              color="text.secondary"
-            >
+            <Typography sx={{ typography: { md: 'body2', xs: 'caption' } }}>
               {company || 'not company'}
             </Typography>
           </Grid>
@@ -73,10 +67,7 @@ const UserInfo: React.FC<Props> = ({ activeUser }) => {
             <LocationOnIcon fontSize="small" />
           </Grid>
           <Grid item xs={11}>
-            <Typography
-              sx={{ typography: { md: 'body2', xs: 'caption' } }}
-              color="text.secondary"
-            >
+            <Typography sx={{ typography: { md: 'body2', xs: 'caption' } }}>
               {location || 'not location'}
             </Typography>
           </Grid>

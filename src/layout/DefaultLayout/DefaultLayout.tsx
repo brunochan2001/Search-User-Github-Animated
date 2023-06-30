@@ -18,29 +18,31 @@ const DefaultLayout: React.FC<Props> = props => {
 
   return (
     <>
-      <Container className={classes.root}>
-        {!isMdUp ? (
-          <>
-            <Container maxWidth="sm">
-              <div className={classes.content}>
-                <Paper className={classes.paperMobile} elevation={16}>
-                  {children}
-                </Paper>
-              </div>
-            </Container>
-          </>
-        ) : (
-          <>
-            <Container maxWidth="md">
-              <div className={classes.content}>
-                <Paper className={classes.paper} elevation={16}>
-                  {children}
-                </Paper>
-              </div>
-            </Container>
-          </>
-        )}
-      </Container>
+      <div className={classes.root}>
+        <Container className={classes.root}>
+          {!isMdUp ? (
+            <>
+              <Container maxWidth="sm">
+                <div className={classes.content}>
+                  <Paper className={classes.paperMobile} elevation={16}>
+                    {children}
+                  </Paper>
+                </div>
+              </Container>
+            </>
+          ) : (
+            <>
+              <Container maxWidth="md">
+                <div className={classes.content}>
+                  <Paper className={classes.paper} elevation={16}>
+                    {children}
+                  </Paper>
+                </div>
+              </Container>
+            </>
+          )}
+        </Container>
+      </div>
       {error && <Alert error={error} />}
     </>
   );
