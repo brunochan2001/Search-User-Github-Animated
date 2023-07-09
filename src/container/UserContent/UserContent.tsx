@@ -14,7 +14,7 @@ interface Props {
 const variants = {
   open: {
     clipPath: 'inset(0% 0% 0% 0% round 10px)',
-    height: '500px',
+    height: '545px',
     transition: {
       type: 'spring',
       bounce: 0,
