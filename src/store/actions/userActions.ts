@@ -10,7 +10,8 @@ import {
   GET_SINGLE_USER_LOADING,
   GET_SINGLE_USER_SUCCESS,
   GET_SINGLE_USER_FAIL,
-  DISMMISS_USER
+  DISMMISS_USER,
+  DISMISS_USERS_LIST
 } from '../actionTypes';
 
 export const getUsers =
@@ -29,6 +30,11 @@ export const getUsers =
         dispatch({ type: GET_USERS_FAIL, payload: error.message });
       }
     }
+  };
+
+export const dismissUsersList =
+  (): ThunkAction<void, RootState, unknown, AnyAction> => async dispatch => {
+    dispatch({ type: DISMISS_USERS_LIST });
   };
 
 export const viewUser =

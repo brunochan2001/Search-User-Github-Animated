@@ -7,12 +7,13 @@ import {
   GET_SINGLE_USER_LOADING,
   GET_SINGLE_USER_SUCCESS,
   GET_SINGLE_USER_FAIL,
-  DISMMISS_USER
+  DISMMISS_USER,
+  DISMISS_USERS_LIST
 } from '../actionTypes';
 
 const initialState: UsersState = {
   loading: false,
-  error: null,
+  error: false,
   data: [],
   activeUser: {}
 };
@@ -23,8 +24,7 @@ const reducer = (state: UsersState = initialState, action: AnyAction) => {
     case GET_USERS_LOADING:
       return {
         ...state,
-        loading: true,
-        data: []
+        loading: true
       };
 
     case GET_USERS_SUCCESS:
@@ -39,7 +39,15 @@ const reducer = (state: UsersState = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        error: payload,
+        error: true,
+        data: []
+      };
+
+    case DISMISS_USERS_LIST:
+      return {
+        ...state,
+        loading: false,
+        error: false,
         data: []
       };
 
@@ -53,7 +61,6 @@ const reducer = (state: UsersState = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        error: false,
         activeUser: payload
       };
 
@@ -61,7 +68,7 @@ const reducer = (state: UsersState = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        error: payload,
+        error: true,
         activeUser: {}
       };
 

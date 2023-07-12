@@ -4,7 +4,7 @@ import { user, users } from './mockData';
 
 const initialState = {
   loading: false,
-  error: null,
+  error: false,
   data: [],
   activeUser: {}
 };
