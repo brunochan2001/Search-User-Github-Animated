@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,10 +6,6 @@ import { AppThunkDispatch, RootState } from '../../store/storeConfig';
 import { viewUser } from '../../store/actions';
 import { useStyles } from '../../layout/DefaultLayout/style';
 import { Progress, UserList, UserTabs } from '../../components';
-
-interface Props {
-  open: boolean;
-}
 
 const variants = {
   open: {
@@ -32,11 +28,22 @@ const variants = {
   }
 };
 
-const UserContent: React.FC<Props> = ({ open }) => {
+const UserContent = () => {
   const dispatch = useDispatch<AppThunkDispatch>();
   const history = useHistory();
   const classes = useStyles();
-  const { data, loading } = useSelector((state: RootState) => state.users);
+  const { data, loading, error } = useSelector(
+    (state: RootState) => state.users
+  );
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if ((!error && loading) || data.length) {
+      setIsOpen(true);
+    } else if (error || !data.length) {
+      setIsOpen(false);
+    }
+  }, [error, data, loading]);
 
   const handleViewUser = (username: string) => {
     dispatch(viewUser(username));
@@ -44,7 +51,7 @@ const UserContent: React.FC<Props> = ({ open }) => {
   };
   return (
     <div className={classes.motionContainer}>
-      <motion.div variants={variants} animate={open ? 'open' : 'closed'}>
+      <motion.div variants={variants} animate={isOpen ? 'open' : 'closed'}>
         <UserTabs />
         {loading ? (
           <Progress />

@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppThunkDispatch, RootState } from '../../store/storeConfig';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AppThunkDispatch } from '../../store/storeConfig';
 import { getUsers } from '../../store/actions';
 import { useDebounce } from 'react-use';
 import { SearchBar } from '../../components';
+import { dismissUsersList } from '../../store/actions/userActions';
 
-interface Props {
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const SearchContent: React.FC<Props> = ({ setIsOpen }) => {
-  const { error } = useSelector((state: RootState) => state.users);
+const SearchContent = () => {
   const dispatch = useDispatch<AppThunkDispatch>();
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    if (search && !error) {
-      setIsOpen(true);
-    } else if (!search || error) {
-      setIsOpen(false);
-    }
-  }, [search, error]);
-
   useDebounce(
     () => {
-      if (search.length) {
+      if (search) {
         dispatch(getUsers(search.toLocaleLowerCase()));
+      } else {
+        dispatch(dismissUsersList());
       }
     },
     400,
