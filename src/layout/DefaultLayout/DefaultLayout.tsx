@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/storeConfig';
 import { Container, Paper } from '@mui/material';
@@ -14,7 +14,19 @@ const DefaultLayout: React.FC<Props> = props => {
   const { children } = props;
   const classes = useStyles();
   const isMdUp = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'));
-  const { error } = useSelector((state: RootState) => state.users);
+  const { error, loading } = useSelector((state: RootState) => state.users);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (error && !loading) {
+      setIsOpen(true);
+      setTimeout(() => {
+        setIsOpen(false);
+      }, 700);
+    } else if (!error) {
+      setIsOpen(false);
+    }
+  }, [error, loading]);
 
   return (
     <>
@@ -43,7 +55,7 @@ const DefaultLayout: React.FC<Props> = props => {
           )}
         </Container>
       </div>
-      {error && <Alert error={error} />}
+      {isOpen && <Alert />}
     </>
   );
 };
