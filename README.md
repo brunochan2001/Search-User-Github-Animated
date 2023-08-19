@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# GitHub User Search
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React app that displays users from GitHub
 
-## Available Scripts
+The app was deployed using netlify and can be visited [here](https://search-github-animated.netlify.app/)
 
-In the project directory, you can run:
+![github-user](https://i.postimg.cc/C5KTxm8z/image.png)
 
-### `npm start`
+## Some development notes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Tasks organization
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I decided to organize my (initial) taks in a [todo list](https://github.com/brunochan2001/Search-User-Github-Animated/issues/1)
 
-### `npm test`
+Initial commits have a "task Id" before a description message to make it easier to understand code changes in the future. The task IDs are from the todo list (for instance, `[i-6] Add functionality to UserSinglePage`).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Library decisions
 
-### `npm run build`
+- Regarding the core technology, I concluded that CRA was a safe bet to get the repository up and running quickly.
+- I used typescript for its static typing, and its advantages over maintenance , prop-types and flow.
+- For layout, used material-ui because it has ready to use components and easy way to create a theme.
+- Using Redux to have global state and get the user in any component.
+- Install the library react-use, to use hook useDebounce that allows control the execution of my function after a certain time to make the request of the users improving performance avoiding unnecessary calls to the Api.
+- For test I just used jest.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Additional thoughts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- All the requirements have been fulfilled
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### How to run locally
 
-### `npm run eject`
+1. Clone the repo
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Run a dev environment
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+4. Run test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm run test
+```
